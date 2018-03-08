@@ -14,9 +14,9 @@
 ## 假设高度已知，请写出三栏布局，其中左栏、右栏宽度各为300px，中间自适应。
 请写出五到七种方案，并说出各种方案的优缺点和兼容性
 - 三栏布局
-1. float+margin 经典的包括圣杯布局和双飞翼布局
-2. inline-block+marin+(calc) 三个并列排放都在一行,中间的宽度是calc(100%-240px) ，减去两边的宽度和加上margin值；另一种是在主体中添加一层div，然后设置margin，主体margin 0 -100px，center margin：0 120px；
-3. table 
+1. float+margin 经典的包括圣杯布局和双飞翼布局;此方式不等高，而且会使用定位，扩展性差。
+2. inline-block+marin+(calc) 三个并列排放都在一行,中间的宽度是calc(100%-240px) ，减去两边的宽度和加上margin值；另一种是在主体中添加一层div，然后设置margin，主体margin 0 -100px，center margin：0 120px；此方式不等高，使用定位，扩展性差。
+3. table 设置con为display：table，左右和主体都是table-cell，左右宽度固定，中间自适应，并且等高。
 ## 左侧菜单栏占300px，右侧内容可以根据浏览器自适应。根据此要求，编写html css代码
 
 ## CSS选择器又哪些？有哪些新特性？有哪些伪类？
