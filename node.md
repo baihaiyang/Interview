@@ -11,12 +11,14 @@
     移动端、响应式、自动化构建、HTTP、离线存储、WEB安全、优化、重构、团队协作、可维护、易用性、SEO、UED、架构、职业生涯、快速学习能力
 
 # CSS类
-## 假设高度已知，请写出三栏布局，其中左栏、右栏宽度各为300px，中间自适应。
+## 假设高度已知，请写出三栏布局，其中左栏、右栏宽度各为100px，中间自适应。
 请写出五到七种方案，并说出各种方案的优缺点和兼容性
-- 三栏布局
 1. float+margin 经典的包括圣杯布局和双飞翼布局;此方式不等高，而且会使用定位，扩展性差。
 2. inline-block+marin+(calc) 三个并列排放都在一行,中间的宽度是calc(100%-240px) ，减去两边的宽度和加上margin值；另一种是在主体中添加一层div，然后设置margin，主体margin 0 -100px，center margin：0 120px；此方式不等高，使用定位，扩展性差。
 3. table 设置con为display：table，左右和主体都是table-cell，左右宽度固定，中间自适应，并且等高。
+4. position 纯定位，con设置position:absolute; 左右和主体都是relative，左右定宽，左右分别设置left和right，中间设置left、right一起设置。给con高度，高度固定。
+5. flex 弹性盒模型布局：设置con的display：flex；左右高度固定，中间flex：1； 但是只能在支持flex的浏览器中使用。等高。
+6. grid 栅格布局：设置con为display：grid；设置gird-template-clomuns：100px 1fr 100px; 两边固定，中间自适应，等高。
 ## 左侧菜单栏占300px，右侧内容可以根据浏览器自适应。根据此要求，编写html css代码
 
 ## CSS选择器又哪些？有哪些新特性？有哪些伪类？
