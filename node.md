@@ -34,14 +34,14 @@
 - X + Y 直接兄弟选择器：在X之后第一个兄弟节点中选择满足Y选择器的元素
 - X > Y 子选择器：选择X的子元素中满足Y选择器的元素
 - X ~ Y 兄弟：选择X之后所有兄弟节点中满足Y选择器的元素
-- [attr]:选择所有设置了attr属性的元素
-- [attr=value]:选择属性值刚好为value的元素
-- [attr~=value]:选择属性值为空白符分隔，其中一个的值刚好是value的元素
-- [attr|=value]:选择属性值刚好为value或者以value-开头的元素
-- [attr^=value]:选择属性值以value开头的元素
-- [attr$=value]:选择属性值以value结尾的元素
-- [attr*=value]:选择属性值中包含value的元素
-- [:checked]:选择单选框，复选框，下拉框中选中状态下的元素
+- [attr] :选择所有设置了attr属性的元素
+- [attr=value] :选择属性值刚好为value的元素
+- [attr~=value] :选择属性值为空白符分隔，其中一个的值刚好是value的元素
+- [attr|=value] :选择属性值刚好为value或者以value-开头的元素
+- [attr^=value] :选择属性值以value开头的元素
+- [attr$=value] :选择属性值以value结尾的元素
+- [attr*=value] :选择属性值中包含value的元素
+- [:checked] :选择单选框，复选框，下拉框中选中状态下的元素
 - X:after，X::after：after伪元素，选择元素虚拟子元素（元素的最后一个元素）
 - :hover ：鼠标进入状态的元素
 - :not(selector): 选择不符合selector的元素
