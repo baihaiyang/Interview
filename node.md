@@ -20,11 +20,16 @@
 5. flex 弹性盒模型布局：设置con的display：flex；左右高度固定，中间flex：1； 但是只能在支持flex的浏览器中使用。等高。
 6. grid 栅格布局：设置con为display：grid；设置gird-template-clomuns：100px 1fr 100px; 两边固定，中间自适应，等高。
 ## 左侧菜单栏占300px，右侧内容可以根据浏览器自适应。根据此要求，编写html css代码
-
+1. float+margin:左边浮动，主体设置marginLeft
+2. table: 设置con的display为table，所有的子元素都是table-cell，左边定宽，等高
+3. flex: 设置con为display为flex，左边定宽，右边flex为1，等高
+4. grid: 设置con的display为grid，grid-template-columns: 100px 1fr; 等高；
 ## CSS选择器又哪些？有哪些新特性？有哪些伪类？
 
 ## 清除浮动的几种方式，优缺点
-
+1. 给父元素设置高度，但是这样的话如果内容是动态的，有可能出现滚动条。
+2. 给每一个子元素后边加一个div或者br标签，设置clear：both;清除浮动，但是会增加页面标签。代码冗余。
+3. 使用伪类，设置父元素after伪类，clear：both； 配合zoom属性使用。
 ## 图片如何实现垂直剧中的
 
 ## css hack你知道哪些？
