@@ -61,9 +61,13 @@
 2. 给每一个子元素后边加一个div或者br标签，设置clear：both;清除浮动，但是会增加页面标签。代码冗余。
 3. 使用伪类，设置父元素after伪类，clear：both； 配合zoom属性使用。
 ## 图片如何实现垂直剧中的
-
+1. table-cell:设置div的display为table-cell,vertical-align:middle;text-align:center; img标签垂直居中。
+2. position: 设置div的position:relative; 设置img标签position：absolute; left: 50%; top: 50%; margin-left: 负宽度的一半，margin-top：负高度的一办，但是只能用在一直宽高的图片中。
+3. css3的box：设置divstyle：text-align: center;display: -webkit-box;-webkit-box-align: center;-webkit-box-pack: center;display: -moz-box;-moz-box-align: center;-moz-box-pack: center;display: -o-box;-o-box-align: center;-o-box-pack: center;display: -ms-box;-ms-box-align: center;-ms-box-pack: center;display: box;box-align: center;box-pack: center;
 ## css hack你知道哪些？
-
+1. 属性前缀法(即内部类hack)："-"减号是IE6专属hack，"\9"是IE6、7、8、9、10都生效，"\0"是IE8、9、10都生效，"\9\0"是 只对IE9、10生效。
+2. 条件注释法：<!--[if IE]>只有IE浏览器显示<--[endif]>，<!--[if IE 6]>只有IE6显示<--[endif]>，<!--[if gte IE 6]>IE6及以上版本浏览器显示<--[endif]>，<!--[if ! IE 8]>不是IE8的其他IE浏览器显示<--[endif]>
+3. 选择器前缀法：*html *前缀只对IE6生效；*+html *+前缀只对IE7生效；@media screen\9{...}只对IE6/7生效；@media \0screen {body { background: red; }}只对IE8有效；@media \0screen\,screen\9{body { background: blue; }}只对IE6/7/8有效；@media screen\0 {body { background: green; }} 只对IE8/9/10有效；@media screen and (min-width:0\0) {body { background: gray; }} 只对IE9/10有效
 ## 谈谈你对CSS盒模型的认识
 - 标准模型和IE模型的区别?
 - CSS是如何设置这两种模型?
