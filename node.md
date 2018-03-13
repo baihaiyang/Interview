@@ -69,16 +69,34 @@
 2. 条件注释法：<!--[if IE]>只有IE浏览器显示<--[endif]>，<!--[if IE 6]>只有IE6显示<--[endif]>，<!--[if gte IE 6]>IE6及以上版本浏览器显示<--[endif]>，<!--[if ! IE 8]>不是IE8的其他IE浏览器显示<--[endif]>
 3. 选择器前缀法：*html *前缀只对IE6生效；*+html *+前缀只对IE7生效；@media screen\9{...}只对IE6/7生效；@media \0screen {body { background: red; }}只对IE8有效；@media \0screen\,screen\9{body { background: blue; }}只对IE6/7/8有效；@media screen\0 {body { background: green; }} 只对IE8/9/10有效；@media screen and (min-width:0\0) {body { background: gray; }} 只对IE9/10有效
 ## 谈谈你对CSS盒模型的认识
+盒模型就是指box的content padding margin border
 - 标准模型和IE模型的区别?
+标准模式盒模型的width和height指的是content的宽高，IE盒模型的width和height指的是content加上border和padding的总和。标准模式适用于现在的绝大多数浏览器，IE模型只适用于IE6及以下的浏览器中。
 - CSS是如何设置这两种模型?
+css新增属性：box-sizing，content-box是默认值，指的是按照标准模式盒模型展示，border-box指的是怪异模式，按照IE盒模型展示。
 - JS如何设置和获取盒模型对应的宽和高?
+获取：
+1. element.style.width/height：此种方式只能获取元素行内样式，不能获取style标签中的样式和外联的css文件中的样式
+2. element.currentStyle.width/height：此方式是IE独有的方式
+3. window.getComputedStyle(element).width/height：此种方式是兼容性比较好的方式。
+4. element.offsetWidth/offsetHeight：此种方式是通用性最强的一中获取方式。
+设置：
+只能通过style设置
 - 什么是优雅降级和渐进增强?
-
+css属性，有很多新属性是旧版本的浏览器不支持，这时候在开发的过程中就会出现一个问题，是先考虑低版本浏览器还是先考虑主流浏览器，所以出现两种观点或者说方式。1. 优雅降级：就是开发的时候主要还是考虑当前主流浏览器的效果，低版本浏览器的兼容问题后期进行适当处理。2.渐进增强：在开发时，首先保证所有浏览器的展示效果都没问题，然后逐渐完善效果和功能，向更高的浏览器更好的效果前进。
 
 ## 谈谈你对BFC的了解
 - 什么是BFC?
+BFC是块级格式化上下文，就是页面中相对独立的一个区域。BDC的原理(渲染规则)：1、BFC里边的元素，在垂直反向会发生边距重叠现象。2、BFC在页面中独立的容器，里边的元素不会影响外面的元素，同样外边的元素也不会影响里边的元素怒。3、BFC区域不去旁边的float box区域重叠，可以用来消除浮动带来的影响。4、计算BFC的高度时，浮动的子元素也会参与计算。
 - 如何创建BFC?
+1. overflow属性不为visible，可以是hidden或者auto。
+2. float 中，属性不为none，只要是设置了浮动，当前元素就创建了BFC。
+3. position中，属性石absolute或者fixed，当前元素生成BFC。
+4. display属性设置为：inline-block、table-cell、table-caption、flex、inline-flex
 - BFC使用场景?
+1. 解决margin重叠
+2. 解决float重叠
+3. 清除浮动
 
 
 # JS类
