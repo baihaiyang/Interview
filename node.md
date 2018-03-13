@@ -104,12 +104,28 @@
 ## DOM事件
 #### DOM事件级别有哪些?
 - DOM0级事件：在元素的事件属性绑定一个函数，缺点是不能绑定多个函数，后绑定的函数会覆盖先绑定的函数
-- DOM2级事件：
+- DOM2级事件：addEventListener和removeEventListener两个函数添加事件，IE8及以下需要用attachEvent和detachEvent实现
+- DOM3级事件：DOM3级事件在DOM2级事件的基础上添加了更多的事件类型，全部类型如下：1.UI事件，当用户与页面上的元素交互时触发，如：load、scroll。2.焦点事件，当元素获得或失去焦点时触发，如：blur、focus。3.鼠标事件，当用户通过鼠标在页面上执行操作时触发如：dbclick、mouseup。4.滚轮事件，当使用鼠标滚轮或类似设备时触发如：mousewheel。5.文本事件，当在文档中输入文本是触发，如：textInput。6.键盘事件，当用户通过键盘在页面上执行操作时触发如：keydown、keypress。7.合成事件，当为IME(输入法编辑器)输入字符时触发，如：compositionstart。8.变动事件，当底层DOM结构发生变化时触发，如：DOMsubtreeModified
 #### 描述DOM事件捕获和冒泡的具体流程?
+- 事件捕获：是事件从上到下发生，事件从最外层document开始触发，到点击的标签元素。
+- 事件冒泡：事件从下到上发生，从点击的元素标签开始触发到document为止。
 #### `Event`对象的常见应用场景?
+- Event对象实在事件发生时产生的默认形参，event对象包含一些属性和方法，同时还有一些IE独有的属性。
 #### 事件委托是什么？
+- 事件委托就是根据事件冒泡的原理，把事件绑定到目标的父元素或者其他祖先元素上，触发执行效果。事件委托优点：1、可以提高js性能，提高事件的处理速度，减少内存的占用。2、动态添加dom元素，不需要修改事件绑定。
 #### 事件冒泡,e.target和e.currentTarget的区别
+- 事件委托中，e.target指的是当前点击的标签，e.currentTarget指的是this，绑定事件的元素。
 #### 浏览器的兼容问题(js)
+- 浏览器宽高问题：网页可见区域宽：document.body.clientWidth || document.documentElement.clientWidth; 网页可见区域高：document.body.clientHeight || document.documentElement.clientHeight; 整个网页的宽：document.body.scrollWidth || document.documentElement.scrollWidth; 整个网页的高：document.body.scrollHeight || document.doacumentElement.scrollHeight; 网页被卷去的高：document.body.scrollTop || document.documentELement.scrollTop; 网页左边卷去的距离：document.body.scrollLeft || document.docuemntElement.scrollLeft;
+- event事件问题：e = event || window.event;
+- DOM节点相关问题：获取下一个兄弟节点：ele.nextElementSibling和ele.nextSibling; 获取上一个兄弟节点：ele.previousElementSibling和ele.previousSibling; 获取第一个子节点：ele.firstElementChild和ele.firstChild; 获取最后一个子节点：ele.lastElementChild和ele.lastChild
+- document.getELementsByCLassName问题：IE678不支持getElementsByClassName,通过另一种方式去实现该方法，获取所有元素，判断是否包含当前class，包含的话放到一个数组中，然后获取完所有包含改类名的元素后，返回当前数组。
+- 获取元素的非行间样式值：object当前元素，oCss样式值：IE下：object.currentStyle[oCss];非IE下：getComputedStyule(object,null)[oCss]
+- 事件监听和事件移除，IE下使用attachEvent和detachEvent，其他使用addEventListener和removeEventListener。
+- 阻止事件传播：e.stopPropagation()或者e.cancelBubble = true;
+- 阻止默认事件：e.preventDefault()或者e.returnValue = 'false';
+- Event对象中的target：获取target的兼容写法：e.target || e.srcElement; 鼠标来的地方：e.relatedTarget || e.formELement; 鼠标去的地方：e.relatedTarget || e.toElement;
+- 火狐中的鼠标滚轮事件：火狐：监听DOMMoustScroll事件，非火狐：document.onmousewheel
 
 ## JS原生
 #### JS中有哪些数据类型
