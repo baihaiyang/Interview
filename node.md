@@ -141,8 +141,22 @@
 #### 什么是深拷贝和浅拷贝？自己不用`JSON.parse`实现一个深拷贝的方法
 - 深拷贝就是把所有的属性方法重新那一份放在新对象上，浅拷贝就是指拷贝引用，拷贝前后指向的都是同一个东西。深拷贝就是遍历所有的属性方法，然后创建新对象，给新对象添加同样的属性方法，返回新对象。
 #### 手工模拟完整的bind方法
-https://segmentfault.com/a/1190000007342882
+```
+Function.prototype.myBind = function(context){
+  var that = this,
+  slice = Array.prototype.slice,
+  args = slice.apply(arguments,[1]),
+  Func = Function(){},
+  bound = function(){
+    return that.apply(context instanceof Func ? this : this || window, args.contact(Array.propotype.slice.apply(arguments, [0])));
+  };
+  Func.prototype = that.prototype;
+  bound.prototype = new Func();
+  return bound;
+}
+```
 #### 什么是节流和防抖？
+
 #### 上拉刷新和下拉加载的实现原理？
 #### 写一个验证邮件的正则表达式
 #### 事件绑定和普通事件的区别（可以举例说明）
