@@ -148,7 +148,7 @@ Function.prototype.myBind = function(context){
   args = slice.apply(arguments,[1]),
   Func = Function(){},
   bound = function(){
-    return that.apply(context instanceof Func ? this : this || window, args.contact(Array.propotype.slice.apply(arguments, [0])));
+    return that.apply(context instanceof Func ? context : this || window, args.contact(Array.propotype.slice.apply(arguments, [0])));
   };
   Func.prototype = that.prototype;
   bound.prototype = new Func();
@@ -160,7 +160,8 @@ Function.prototype.myBind = function(context){
 - debounce:函数防抖是指对于连续的事件响应我们只需要执行一次回调。比如：注册用户名验证或者下拉模糊搜索：这类效果一般是在像搜索框中输入字符时，从后台服务器拉取相应的验证结果或者模糊查询的结果，通常做法是在键盘抬起keyup时触发某个函数，用来向后端请求数据，但是如果每次抬起都进行一次请求，那我们搜索过程中就会进行超级超级多的请求，而我们实际需要的只是对最后一次键盘抬起时输入框中的文字进行请求，所有解决方式：在键盘抬起后的一段时间中，如果不进行按键操作，就执行回调函数。通俗来讲就是说用户输入不间断的时候，暂时不执行回调函数，当用户输入间隔超过一定时间的时候才执行回调函数。函数防抖是在某时间结束后的一段时间内，如果不在触发该事件，就执行相应的回调函数。
 #### 上拉刷新和下拉加载的实现原理？
 #### 写一个验证邮件的正则表达式
-- ^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$; 包含汉字：^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$
+- ^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$;
+- ^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$
 #### 事件绑定和普通事件的区别（可以举例说明）
 - 普通事件会覆盖，就是通常所说的DOM0级事件。时间绑定的话可以绑定多个事件，不会覆盖。
 #### javascript 模版引擎用过哪些？实现原理是什么？
