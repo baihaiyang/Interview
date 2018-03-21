@@ -193,16 +193,23 @@ Function.prototype.myBind = function(context){
 #### jquery.extend , jquery.fn.extend的区别
 - jQuery.extend扩展的是类本身，jQuery.fn.extend扩展的事类实例的对象。jQuery.extend对应的是$.xxx；JQuery.fn.extend对应的是$('#id').xxx；
 #### 谈一下jquery中的bind，live，delegate，on区别
-- bind是直接绑定在元素上，不支持动态元素；live使用过冒泡的方式绑定到元素上，适合绑定到doucment或者列表元素的父元素上，支持动态数据；delegate适用于更小范围的事件代理，性能优于live；on是最新的时间绑定机制，1.7版本以后整合了其他三种方式进行时间绑定；同时1.9版本以上删除了live事件，通过on事件代替；
+- bind是直接绑定在元素上，不支持动态元素；live使用过冒泡的方式绑定到元素上，适合绑定到doucment或者列表元素的父元素上，支持动态数据；delegate适用于更小范围的事件代理，性能优于live；on是最新的时间绑定机制，1.7版本以后整合了其他三种方式进行时间绑定；同时1.7版本以上删除了live事件，通过on事件代替；jQuery3.0版本以后删除了bind、live、delegate方法。
 - bind只能支持已存在的元素的事件绑定，其他三种都是支持动态元素的事件绑定；
 - 删除方式不同。bind使用unbind删除事件；live使用die删除事件；delegate使用undelegate删除事件；on使用off删除绑定事件；
 #### document.ready和document.load和$(function(){})有什么区别？
+- document.onload事件是当页面所有资源都加载完毕以后才会执行其中的代码。$(document).ready(function(){})是当页面DOM结构就在完成就可以执行，不用等待所有的图片等资源加载完毕。简写：$(function(){})
+- document.onload只能写一个，写多个会被覆盖。$(document).ready(function(){})可以编写多个，并且按顺序执行。
 #### $.data()和$('#aaa').data()各自作用是什么？有什么区别
+- $('#aaa').data()方法是设置和获取aaa元素data-属性开头的值。
 
 ## ES6
 #### 什么时候应该用箭头函数？什么时候不能用？
+- 箭头函数中的this是直接定义的，创建函数的时候就会定义当前this的值为当前作用域。当需要提前定义this的时候可以使用箭头函数，或者函数中用不到this的时候可以使用箭头函数。
+- 当存在动态上下文的时候，不能使用箭头函数。比如：对象中的函数、原型上定义的方法、构造函数中的方法、事件绑定的回调函数中、以及别人不容易看懂的简单函数中都不能使用或者不应该使用箭头函数。
 #### 请写出ES6中Array.isArray()的实现代码
+- Object.prototype.toString.call(arr) === '[object Array]'
 #### 如何在项目中解析处理es6和es7代码
+- babel把ES6代码转换成ES5代码并且是严格模式下的ES5代码。
 #### Promise常用方法，Promise.race的作用，then方法里reject和catch的区别
 
 ## 工程化
