@@ -211,6 +211,7 @@ Function.prototype.myBind = function(context){
 #### 如何在项目中解析处理es6和es7代码
 - babel把ES6代码转换成ES5代码并且是严格模式下的ES5代码。
 #### Promise常用方法，Promise.race的作用，then方法里reject和catch的区别
+- Promise常用方法resolve,reject,catch,all,race; Promise.race的作用是把几个Promise对象一起执行，哪个执行最快，就用他的返回结果； then方法里的reject函数是当状态变成rejected的时候执行的，但是catch方法是发生异常时调用的，如果不写then的第二个函数，那么reject执行的时候也会跳转到catch中。
 
 ## 工程化
 #### 什么叫模块化？你用过哪些模块化解决方案？
@@ -253,6 +254,8 @@ Function.prototype.myBind = function(context){
 
 ## 渲染机制
 #### 什么是`DOCTYPE`及作用?标准模式和兼容模式有什么区别?
+- DOCTYPE是告诉浏览器以哪种模式解析文档，有的话就是标准模式，没有或者不正确的话就是兼容模式解析。
+- 标准模式的排版和js运作模式都是以浏览器支持的最高标准运行。兼容模式是向后兼容，确保更多的内容显示，重点在于内容的显示。
 #### 浏览器是如何渲染页面的?
 #### 什么是重排？什么时候会触发重排?
 #### 什么是重绘？什么时候会触发重绘?
