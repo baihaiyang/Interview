@@ -271,6 +271,11 @@ Function.prototype.myBind = function(context){
 - js异步加载主要方式：动态创建script、async、defer
 - async和defer的区别在于async是当前js只要加载完成以后就会执行，defer是当所有元素解析完成以后，才会按照加载顺序执行。
 
+## 缓存
+#### Expires和Cache-Control是如何工作的？
+#### Last-Modified和Etag是如何工作的？
+#### 请描述`cookie`、`sessionStorage`和`localStorage`的区别
+
 ## 工程化
 #### 什么叫模块化？你用过哪些模块化解决方案？
 #### 什么叫组件化？你在工作中是如何实现组件化的？
@@ -309,11 +314,6 @@ Function.prototype.myBind = function(context){
 ## 安全
 #### `CSRF`的原理以及如何防御
 #### `XSS`的原生和如何防御
-
-## 缓存
-#### Expires和Cache-Control是如何工作的？
-#### Last-Modified和Etag是如何工作的？
-#### 请描述`cookie`、`sessionStorage`和`localStorage`的区别
 
 ## 服务器
 #### 如何在web应用中在实现权限控制?
