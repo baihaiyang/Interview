@@ -273,26 +273,50 @@ Function.prototype.myBind = function(context){
 
 ## 缓存
 #### Expires和Cache-Control是如何工作的？
+- Expires是设置资源过期时间，Cache-Control是设置过多长时间失效。Expires是http 1.0里边的缓存设置方式，Cache-Control是http 1.1以后设置缓存的方式，如果二者同时存在Cache-Control会覆盖Expires,当客户端发送请求的时候会先判断是否过期，如果没有过期就直接从缓存中读取内容，不再发送请求。
 #### Last-Modified和Etag是如何工作的？
+- Last-Modified是资源在服务端最后修改的日期，会在响应头中返回给客户端，客户端存储Last-Modified，当客户端再次发送请求的时候，如果缓存已经过期，就会带着Last-Modified的日期发送到服务端，如果时间没变化，直接304，返回空的响应体，客户端还是从缓存中取数据。如果修改时间不一致，就会响应修改以后的内容，并且在响应头中返回新的last-modified给客户端。
+- Etag是资源在服务端的标识码，当客户端请求资源的时候，服务端会生成相应的标识码在响应头中返回给客户端，客户端存储Etag，当客户端再次请求该资源的时候，会带着Etag，如果服务端的Etag和请求体中的Etag相同的话，就是直接304，从缓存中读取数据。如果不一致，就会响应修改以后的内容，同时在响应头中返回一个新的Etag给客户端。
 #### 请描述`cookie`、`sessionStorage`和`localStorage`的区别
+- cookie和loaclStorage、sessionStorage都是存储在客户端。
+- 1、大小不同：cookie存储最多4k的内容，storage可以存储差不多5M的内容。2、有效时间：cookie是设置过期时间，只要是在过期时间之前都是有效的；localStorage是持久数据，除非手动清除，否则会一直存储在客户端中；sessionStorage是session级别的，当浏览器窗口关闭的时候就会清除。3、他们与服务端的交互方式：cookie会在请求资源的时候带着，在请求体中，同时服务端也可以写cookie到客户端，storage不会在请求的时候带着。
+
+## 框架
+#### 前端路由的实现原理
+1. hash：通过#拼接的方式，改变当前地址，同时不会向服务器发送请求，但是会触发hashState事件，然后再hashState事件中处理地址和其他相应的操作。
+2. history API: pushState,replaceState二者都会像页面中添加一条历史记录同时地址栏发生变化，但是不会向服务端发送请求，会触发popState事件，同时在popState事件中获取url处理相应的内容变化。
+#### `MVVM`框架解决了什么问题？带来了什么问题？
+1. 关注点分离；操作数据即操作DOM；动态模板
+2. 
+#### 浏览器地址栏里面的'＃' 如何清楚？mode共有几个参数，参数有什么区别？
+1. 通过history的pushState和relaceState方法可以改变地址栏的链接而且不会刷新当前页面。路由的另一种方式。
+2. mode暂时不知道是什么。
+#### vue中父组件如何给子组件传递值
+1. 使用props进行传递，子组件需要监听watch并赋值，否则获取到的数据是空数组。
+2. 父组件通过ref属性调用子组件中的方法，通过参数把数据传递给子组件，子组件获取参数数据并使用。
+#### react的优缺点
+- 优点：1、React速度非常快，因为它采用的是虚拟dom的技术，性能好。2、一切都是component，代码复用更容易，更加模块化。3、跨浏览器兼容，虚拟DOM解决了跨浏览器问题，在IE8中也没有问题。4、代码兼容性好，因为只是view层，可以更好的现在的代码结合。5、基于this.props和this.state生成HTLML，bug少。
+- 缺点：1、React只是view层，必须结合使用Redux、ReactRouter等才能构建大型应用程序。
+#### React组件中props和state有什么区别？
+- props一般用于父组件想子组件传递数据使用，父子组件通信使用。state主要用于组件内的状态维护，数据更新渲染传递等。
+#### 什么是JSX
+- JSX是react中的一种语法，JavaScript XML语法，方便模板的生成输出。
+#### React中不同组件传递数据的方式有哪些？至少说出三种
+1. props：父组件通过props把数据传递给子组件
+2. context：通过设置当前组件的context，可以再他的子孙组件中通过this.context获取数据
+3. 父组件调用子组件的函数并且把数据当做参数传递给子组件
+4. 父组件把函数传递给子组件，子组件调用函数并传递参数
+#### 请描述React的组件加载生命周期函数以及`shouldComponentUpdate`方法的实际使用场景?
+- getInitialState、componentWillMount、render、componentDidMount、componentWillUnmount
+- componentWillReseiveProps、shouldComponentUpdate、componentWillUpdate、render、componentDidUpdate、componentWillUnmount
+- shouldComponentUpdate是在组件接收到新的props的时候调用，通过接收到的数据进行判断是否进行更新。
+#### 说一下angular、vue、react的相同点和不同点?各适用于什么样的项目场景?
 
 ## 工程化
 #### 什么叫模块化？你用过哪些模块化解决方案？
 #### 什么叫组件化？你在工作中是如何实现组件化的？
 #### gulp和webpack的相同点和不同点?
 #### 什么是热加载?
-
-## 框架
-#### 前端路由的实现原理
-#### `MVVM`框架解决了什么问题？带来了什么问题？
-#### 浏览器地址栏里面的'＃' 如何清楚？mode共有几个参数，参数有什么区别？
-#### vue中父组件如何给子组件传递值
-#### react的优缺点
-#### React组件中props和state有什么区别？
-#### 什么是JSX
-#### 说一下angular、vue、react的相同点和不同点?各适用于什么样的项目场景?
-#### React中不同组件传递数据的方式有哪些？至少说出三种
-#### 请描述React的组件加载生命周期函数以及`shouldComponentUpdate`方法的实际使用场景?
 
 ## HTTP
 #### HTTP报文的组成部分
